@@ -1,0 +1,43 @@
+{
+  "name": "cell-war",
+  "version": "0.0.0",
+  "main": "lib/cell-war.js",
+  "description": "Simple simulation of 2 fighting populations",
+  "homepage": "https://github.com/b1r3k/recruitment-challanges",
+  "bugs": "https://github.com/b1r3k/cell-war/issues",
+  "author": {
+    "name": "Lukasz Jachym",
+    "email": "lukasz.jachym <at> gmail.com",
+    "url": "http://b1r3k.github.io"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/b1r3k/cell-war"
+  },
+  "license": "MIT",
+  "files": [
+    "lib"
+  ],
+  "keywords": [
+    "cell-war",
+    "simulation",
+    " game"
+  ],
+  "devDependencies": {
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-nodeunit": "^0.3.3",
+    "grunt-contrib-watch": "^0.6.1",
+    "load-grunt-tasks": "^0.4.0",
+    "time-grunt": "^0.3.1",
+    "jshint-stylish": "^0.2.0",
+    "browserify": "^4.1.3"
+  },
+  "scripts": {
+    "test": "grunt",
+    "browser": "browserify lib/cell-war.js > browser.js"
+  },
+  "bin": {
+    "cell-war": "cli.js"
+  },
+  "preferGlobal": "true"
+}
