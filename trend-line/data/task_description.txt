@@ -1,0 +1,27 @@
+Zadanie:
+
+Proszę napisać program, który na podstawie dostarczonego szeregu czasowego będzie znajdował linie trendu za pomocą metody najmniejszych kwadratów. Dla każdej linii proszę wyznaczyć również linie przesunięte o jedno odchylenie standardowe w górę i w dół.
+
+Wejście programu to plik csv zawierający szereg czasowy składający się z N elementów gdzie każda linia pliku zawiera odpowiednio datę, cenę otwarcia, cenę maksymalną, cenę minimalną i cenę zamknięcia oraz wartość zmiennej n która jest liczbą naturalną ze zbioru [2,N]. Algorytm ma działać na cenach zamknięcia.
+
+Wyjście z programu powinno zawierać N/n linii. Każda z nich powinna zawierać następujące wartości oddzielone średnikami:
+data początku linii trendu (punkt startowy)
+wartość linii trendu w punkcie startowym
+wartość linii przesuniętej o jedno odchylenie standardowe w górę w punkcie startowym
+wartość linii przesuniętej o jedno odchylenie standardowe w dół w punkcie startowym
+data końca linii trendu (punkt końcowy)
+wartość linii trendu w punkcie końcowym
+wartość linii przesuniętej o jedno odchylenie standardowe w górę w punkcie końcowym
+wartość linii przesuniętej o jedno odchylenie standardowe w dół w punkcie końcowym
+
+Przykładowa jedna linia wyjścia z programu powinno wyglądać następująco:
+2013.09.05 00:00;42.5;45.5;39.5;2014.05.08 00:00;43.61;46.61;40.61
+
+Jakie widzi Pan wady rozwiązania tego problemu przeprowadzonego tą metodą dla załączonego pliku? W jaki sposób można sobie z nimi poradzić (wystarczą wnioski).
+
+Przykładowa wizualizacja rozwiązania:
+http://www.mql5.com/en/charts/2340443/eurpln-d1-dom-maklerski-banku
+
+Język programowania: Python 2.*.
+
+
