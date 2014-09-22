@@ -12,6 +12,7 @@ import argparse
 from collections import namedtuple
 import sys
 import csv
+import math
 
 import numpy as np
 from matplotlib.dates import date2num
@@ -44,7 +45,7 @@ def get_trend_line(A, y, start_idx, width):
 def get_all_trend_lines(A, y, dates, width):
     trend_lines = []
     samples_amount = len(y)
-    trend_lines_amount = samples_amount / width
+    trend_lines_amount = int(math.ceil(samples_amount / float(width)))
 
     std = np.std(y, axis = 0)
 
@@ -55,14 +56,16 @@ def get_all_trend_lines(A, y, dates, width):
     for trend_line_idx in range(trend_lines_amount):
         trend_line_idx_start = trend_line_idx * width
         m, c = get_trend_line(A, y, trend_line_idx_start, width)
+        # don't go beyond no. of samples!
+        trend_line_stop_idx = trend_line_idx_start + width if trend_line_idx_start + width < len(y) else len(y) - 1
         new_trendline = TrendLine(dates[trend_line_idx_start],
                                   trendline(trend_line_idx_start),
                                   trendline_sigma(trend_line_idx_start, 1),
                                   trendline_sigma(trend_line_idx_start, -1),
-                                  dates[trend_line_idx_start + width],
-                                  trendline(trend_line_idx_start + width),
-                                  trendline_sigma(trend_line_idx_start + width, 1),
-                                  trendline_sigma(trend_line_idx_start + width, -1),
+                                  dates[trend_line_stop_idx],
+                                  trendline(trend_line_stop_idx),
+                                  trendline_sigma(trend_line_stop_idx, 1),
+                                  trendline_sigma(trend_line_stop_idx, -1),
                                   )
         trend_lines.append(new_trendline)
 
@@ -105,7 +108,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--plot', action='store_true')
     parser.add_argument('--trend-lines', action='store_true')
-    parser.add_argument('--width', action='store', dest='width')
+    parser.add_argument('--width', action='store', dest='width', required=True)
     parser.add_argument('csv_path', nargs=1, help='a path to the csv file with prices in OHLC format')
     args = parser.parse_args()
 
