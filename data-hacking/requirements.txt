@@ -1,0 +1,8 @@
+PyYAML==3.10
+argparse==1.2.1
+distribute==0.7.3
+nltk==2.0.4
+python-dateutil==2.1
+requests==1.2.3
+six==1.4.1
+wsgiref==0.1.2

@@ -1,0 +1,35 @@
+# Python
+/env
+/build
+*.pyc
+
+# IDE
+.idea
+*.iml
+
+### diff & patch
+*.diff
+*.patch
+*.rej
+*.orig
+
+### merge
+*.LOCAL.*
+*.REMOTE.*
+*.BASE.*
+*.BACKUP.*
+
+### logs
+/logs/*.log
+
+### nodejs
+/node-env
+node_modules
+npm-debug.log
+
+# Grunt
+/dist
+.ftppass
+
+/.env
+/tmp
