@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-10">
-            CHART
+            <div timeseries-chart height="400" width="800" padding="5" data="model.chosenInstrumentsInD3Format"></div>
         </div>
         <div class="col-lg-2">
 
@@ -16,7 +16,8 @@
             <form role="form" ng-submit="loadInstruments(availableInstruments)">
                 <div class="checkbox" ng-repeat="instrument in availableInstruments">
                     <label>
-                        <input type="checkbox" ng-model="instrument.checked" ng-change="canBeChecked(instrument)"> {{ instrument.displayName }}
+                        <input type="checkbox" ng-model="instrument.checked" ng-change="canBeChecked(instrument)"> {{
+                        instrument.displayName }}
                     </label>
                 </div>
                 <button type="submit" class="btn btn-default">Reload</button>
