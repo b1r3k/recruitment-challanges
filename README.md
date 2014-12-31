@@ -24,3 +24,9 @@ Used: (heavily) itertools, nltk, python-dateutil
 Objective: Using angluarJS & d3, make simple application that shows a chart with stock prices
 
 Used: angularJS, d3, nodejs, grunt, bower, yeoman
+
+## reverse-polish-notation-calc
+
+Objective: implement RPN with additional flavourings
+
+Used: nodejs, lodash, nodeunit
