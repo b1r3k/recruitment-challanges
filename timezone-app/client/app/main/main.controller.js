@@ -2,10 +2,11 @@
 
 angular.module('timezoneAppApp')
   .controller('MainCtrl', function ($scope, $http) {
-    $scope.awesomeThings = [];
+        var localTimezone = jstz.determine().name();
 
-    $http.get('/api/things').success(function(awesomeThings) {
-      $scope.awesomeThings = awesomeThings;
-    });
+        $scope.timezones = ["UTC", localTimezone];
 
+        $scope.addTimezone = function () {
+            $scope.timezones.push(localTimezone);
+        };
   });

@@ -22,6 +22,7 @@
       <!-- injector:css -->
       <link rel="stylesheet" href="app/app.css">
       <link rel="stylesheet" href="app/main/main.css">
+      <link rel="stylesheet" href="app/timezone/timezone.css">
       <link rel="stylesheet" href="components/modal/modal.css">
       <!-- endinjector -->
     <!-- endbuild -->
@@ -59,14 +60,20 @@
       <script src="bower_components/angular-route/angular-route.js"></script>
       <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
       <script src="bower_components/lodash/dist/lodash.compat.js"></script>
+      <script src="bower_components/moment/moment.js"></script>
+      <script src="bower_components/moment-timezone/builds/moment-timezone-with-data-2010-2020.js"></script>
+      <script src="bower_components/jstzdetect/jstz.min.js"></script>
+      <script src="bower_components/angular-ui-utils/keypress.js"></script>
       <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,client}) app/app.js -->
         <script src="app/app.js"></script>
           <!-- injector:js -->
+          <script src="app/central-clock/central-clock.service.js"></script>
           <script src="app/main/main.controller.js"></script>
           <script src="app/main/main.js"></script>
+          <script src="app/timezone/timezone.directive.js"></script>
           <script src="components/modal/modal.service.js"></script>
           <script src="components/navbar/navbar.controller.js"></script>
           <!-- endinjector -->

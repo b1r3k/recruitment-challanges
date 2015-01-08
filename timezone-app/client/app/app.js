@@ -5,7 +5,8 @@ angular.module('timezoneAppApp', [
   'ngResource',
   'ngSanitize',
   'ngRoute',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'ui.keypress'
 ])
   .config(function ($routeProvider, $locationProvider) {
     $routeProvider
