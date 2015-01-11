@@ -1,4 +1,12 @@
-<form>
-    <input class="date" type="text" ng-model="model.dateStr" ui-keydown="{'enter':'changeDate($event, model.dateStr)'}">
-    <select class="timezone" ng-model="model.selectedTimezone" ng-options="timezoneName for timezoneName in model.timezoneNames" ng-change="updateDateStr()"></select>
+<form class="form-inline">
+    <div class="form-group">
+        <label class="sr-only" for="datetimeInput">Time</label>
+        <input class="form-control date" type="text" ng-model="model.dateStr" id="datetimeInput"
+               ui-keydown="{'enter':'changeDate($event, model.dateStr)'}">
+    </div>
+    <div class="form-group">
+        <label class="sr-only" for="timezoneInput">Timezone</label>
+        <select class="timezone form-control" ng-model="model.selectedTimezone" id="timezoneInput"
+                ng-options="timezoneName for timezoneName in model.timezoneNames" ng-change="updateDateStr()"></select>
+    </div>
 </form>

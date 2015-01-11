@@ -3,15 +3,15 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
-            <ul>
-                <li ng-repeat="timezone in timezones track by $index">
-                    <timezone init-timezone="timezone"></timezone>
-                </li>
-            </ul>
+            <a class="btn btn-default" href="#" role="button" ng-click="addTimezone()">Add timezone</a>
         </div>
-        <div class="row">
-            <div class="col-lg-12">
-              <a class="btn btn-default" href="#" role="button" ng-click="addTimezone()">Add timezone</a>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="row" ng-repeat="timezone in timezones track by $index">
+                <div class="col-lg-12">
+                    <timezone init-timezone="timezone"></timezone>
+                </div>
             </div>
         </div>
     </div>

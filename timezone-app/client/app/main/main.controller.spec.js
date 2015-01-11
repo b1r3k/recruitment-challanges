@@ -2,27 +2,30 @@
 
 describe('Controller: MainCtrl', function () {
 
-  // load the controller's module
-  beforeEach(module('timezoneAppApp'));
+    // load the controller's module
+    beforeEach(module('timezoneAppApp'));
 
-  var MainCtrl,
-      scope,
-      $httpBackend;
+    var MainCtrl,
+        scope;
 
-  // Initialize the controller and a mock scope
-//  beforeEach(inject(function (_$httpBackend_, $controller, $rootScope) {
-//    $httpBackend = _$httpBackend_;
-//    $httpBackend.expectGET('/api/things')
-//      .respond(['HTML5 Boilerplate', 'AngularJS', 'Karma', 'Express']);
-//
-//    scope = $rootScope.$new();
-//    MainCtrl = $controller('MainCtrl', {
-//      $scope: scope
-//    });
-//  }));
-//
-//  it('should attach a list of things to the scope', function () {
-//    $httpBackend.flush();
-//    expect(scope.awesomeThings.length).toBe(4);
-//  });
+//  Initialize the controller and a mock scope
+    beforeEach(inject(function (_$httpBackend_, $controller, $rootScope) {
+        scope = $rootScope.$new();
+        MainCtrl = $controller('MainCtrl', {
+            $scope: scope
+        });
+    }));
+
+    it('should init with two timezones, one GMT & one local', function () {
+        var localTimezone = jstz.determine().name();
+
+        expect(scope.timezones.length).toBe(2);
+        expect(scope.timezones.indexOf('GMT')).toBeGreaterThan(-1);
+        expect(scope.timezones.indexOf(localTimezone)).toBeGreaterThan(-1);
+    });
+
+    it('should allow to add new timezone', function () {
+        scope.addTimezone();
+        expect(scope.timezones.length).toBe(3);
+    });
 });

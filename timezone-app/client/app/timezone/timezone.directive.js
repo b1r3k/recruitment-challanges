@@ -1,46 +1,42 @@
 'use strict';
 
 angular.module('timezoneAppApp')
-    .controller('TimezoneCtrl', function ($scope, $filter, centralClock, $interval) {
+    .controller('TimezoneCtrl', function ($scope, $filter, $interval, timezoneSrv) {
         $scope.model = {
-            date: centralClock.getClock(),
+            date: timezoneSrv.getRefDate(),
             dateStr: null,
-            selectedTimezone: $scope.initTimezone || "UTC",
+            selectedTimezone: $scope.initTimezone || 'UTC',
             timezoneNames: moment.tz.names(),
         };
 
-        var dateFormat = "H:mm YYYY-MM-DD";
+        var dateFormat = 'H:mm YYYY-MM-DD';
 
         $scope.updateDateStr = function () {
-            $scope.model.date = centralClock.getClock();
             $scope.model.dateStr = $scope.model.date.tz($scope.model.selectedTimezone).format(dateFormat);
-        }
+        };
+
+        $scope.parseDateStr = function (dateStr) {
+            var newDate = moment.tz(dateStr, dateFormat, $scope.model.selectedTimezone);
+
+            return newDate;
+        };
 
         $scope.changeDate = function ($event, newDateStr) {
+            var newDate = $scope.parseDateStr(newDateStr);
             $event.preventDefault();
-            var newDate = moment(newDateStr, dateFormat, true);
 
             if (newDate.isValid()) {
-
-                var newClock = newDate.tz($scope.model.selectedTimezone).utc();
-                centralClock.setClock(newClock);
-                console.log('Jump! ', newDate);
-                console.log('Sending: ', newClock);
+                timezoneSrv.setRefDate(newDate.utc());
             }
         };
 
-        $scope.$on("update-time", function () {
+        $scope.$on('update-date', function (event, broadcastedDate) {
+            $scope.model.date = broadcastedDate;
             $scope.updateDateStr();
         });
 
         // init
         $scope.updateDateStr();
-
-//        var updateInterval = $interval($scope.updateDateStr, 1000);
-//
-//        $scope.$on('$destroy', function () {
-//            $interval.cancel(updateInterval);
-//        });
     })
     .directive('timezone', function () {
         return {
