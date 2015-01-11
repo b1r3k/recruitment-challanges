@@ -30,3 +30,9 @@ Used: angularJS, d3, nodejs, grunt, bower, yeoman
 Objective: implement RPN with additional flavourings
 
 Used: nodejs, lodash, nodeunit
+
+## timezone-app
+
+Objective: Create a world time zone converter
+
+Used: angularJS, lodash, moment.js, karma, jasmine, protractor
